@@ -1,3 +1,36 @@
+section {
+    height: 100vh;
+}
+.primera {
+    text-align: center;
+    background-color: RGB(203,241,244);
+}
 .titulo {
     font-family: "Satisfy", cursive;
+   
 }
+.logo {
+    width: 30%;
+    
+}
+.colorrosa {
+    color:RGB(249,219,211);
+}
+.colorceleste {
+    color: RGB(146,221,226);
+}
+.colorverde {
+    color: RGB (203,241,244);
+}
+body {
+    margin: 0;
+    background-color: RGB(249,219,211);
+}
+.abeezee {
+    font-family: 'ABeeZee', sans-serif;
+}
+.item {
+    width: 25%;
+    float: left;
+    text-align: center;
+}    
