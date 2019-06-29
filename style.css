@@ -1,36 +1,84 @@
+* {
+    box-sizing: border-box;
+    font-family: 'ABeeZee', sans-serif;
+}
+
 section {
     height: 100vh;
 }
 .primera {
+    padding-top: 3%;
     text-align: center;
     background-color: RGB(203,241,244);
+    background-image: linear-gradient(rgb(203,241,244) , rgb(249,219,211));
+    /*background-image: url('images/background.png');*/
+    background-position: right bottom;
+    background-size: contain;
 }
 .titulo {
-    font-family: "Satisfy", cursive;
-   
+    font-family: "Satisfy", cursive; 
+    font-size: 4.0em;
+    color:  rgb(51, 0, 128); 
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+
+    top: 50vh;
 }
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {top: 100vh;}
+    to {top: 50vh;}
+  }
+  
+  /* Standard syntax */
+  @keyframes example {
+    from {top: 100vh;}
+    to {top: 50vh;}
+  }
+
 .logo {
-    width: 30%;
-    
+    width: 20%;
 }
 .colorrosa {
-    color:RGB(249,219,211);
+    color: rgb(249,219,211);
 }
 .colorceleste {
-    color: RGB(146,221,226);
+    color: rgb(146,221,226);
 }
 .colorverde {
-    color: RGB (203,241,244);
+    color: rgb(203,241,244);
 }
 body {
     margin: 0;
     background-color: RGB(249,219,211);
 }
-.abeezee {
-    font-family: 'ABeeZee', sans-serif;
+
+.menu {
+    background-color: RGB(203,241,244);
+    padding: 10px 0;
+    position: fixed; 
+    width: 100%; 
 }
 .item {
     width: 25%;
     float: left;
     text-align: center;
-}    
+    color: rgb(0,0,0); 
+    text-decoration: none; 
+    text-transform: uppercase;
+    
+}   
+ 
+.item:hover {
+    color:  rgb(51, 0, 128); 
+}
