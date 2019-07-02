@@ -7,7 +7,7 @@ section {
     height: 100vh;
 }
 .primera {
-    padding-top: 3%;
+    padding-top: 8%;
     text-align: center;
     background-color: RGB(203,241,244);
     background-image: linear-gradient(rgb(203,241,244) , rgb(249,219,211));
@@ -30,24 +30,30 @@ section {
     animation-name: example;
     animation-duration: 4s;
 
-    top: 50vh;
+    top: 65vh;
 }
 
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
     from {top: 100vh;}
-    to {top: 50vh;}
+    to {top: 65vh;}
   }
   
   /* Standard syntax */
   @keyframes example {
     from {top: 100vh;}
-    to {top: 50vh;}
+    to {top: 65vh;}
   }
-
+.nombreseccion {
+    font-family: "Satisfy", cursive;
+    font-size: 3.0em;  
+    background-color: RGB(203,241,244); 
+    margin-left: 2%; 
+}
 .logo {
     width: 20%;
+    min-width: 360px;
 }
 .colorrosa {
     color: rgb(249,219,211);
@@ -64,11 +70,13 @@ body {
 }
 
 .menu {
+    z-index: 100;
     background-color: RGB(203,241,244);
     padding: 10px 0;
     position: fixed; 
     width: 100%; 
 }
+
 .item {
     width: 25%;
     float: left;
@@ -76,9 +84,15 @@ body {
     color: rgb(0,0,0); 
     text-decoration: none; 
     text-transform: uppercase;
-    
 }   
  
 .item:hover {
     color:  rgb(51, 0, 128); 
+}
+
+.card-image > img {
+    width: 100%; 
+    height: 100%;
+    max-height: 320px;
+    object-fit: cover;
 }
