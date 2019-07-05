@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,50 +11,163 @@
   <link href="https://fonts.googleapis.com/css?family=Satisfy&display|ABeeZee=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="./materialize/css/materialize.css">
+  <link href="./fontawesome/css/all.css" rel="stylesheet">
 </head>
-<body class = "colorfondo">
-   <div class = 'menu'>
-    <a href = '#' class = 'item'>Inicio</a>
-    <a href = '#recetas' class = 'item'>Recetas</a>
-    <a href = '#quienes' class = 'item'>Quienes somos</a>
-    <a href = '#contactanos' class = 'item'>Contactanos</a>
+
+<body class="colorfondo">
+  <div class='menu'>
+    <a href='#' class='item'>Inicio</a>
+    <a href='#recetas' class='item'>Recetas</a>
+    <a href='#quienes' class='item'>Quienes somos</a>
+    <a href='#contactanos' class='item'>Contactanos</a>
   </div>
-  <section class = 'primera'>
-    <img src = 'images/logo.png' class = 'logo'>
-    <h1 class = 'titulo'>Buen Día</h1>
+  <section class='primera'>
+    <img src='images/logo.png' class='logo'>
+    <h1 class='titulo'>Buen Día</h1>
   </section>
-  <section id = 'recetas'>
-    <div class="col s12 m7">
-      <div class="card horizontal">
-        <div class="card-image">
-          <img src="images/recipes/panqueques.jpg">
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <h3>Panqueques</h3>
-            <p>Ingredientes
-              <ul>
-                <li>2 huevos</li>
-                <li>220 gr. harina 0000</li>
-                <li>500 cc. leche</li>
-              </ul> 
-            </p>
+  <section id='recetas'>
+    <h1 class='nombreseccion'>Recetas</h1>
+    <div class="row">
+      <div class="col s12 m6 l4">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="images/recipes/panqueques.jpg">
           </div>
-          <div class="card-action">
-            <a href="#">Ver más</a>
+          <div class="card-stacked">
+            <div class="card-content">
+              <h3>Panqueques</h3>
+              <p>Ingredientes
+                <ul>
+                  <li>2 huevos</li>
+                  <li>220 gr. harina 0000</li>
+                  <li>500 cc. leche</li>
+                </ul>
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#modalPanqueques" class='modal-trigger'>Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l4">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="images/recipes/chocotorta.jpg">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <h3>Chocotorta</h3>
+              <p>Ingredientes
+                <ul>
+                  <li>500 gr. queso crema</li>
+                  <li>500 gr. dulce leche</li>
+                  <li>500 gr. galletas chocolate</li>
+                </ul>
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#modalChocotorta" class='modal-trigger'>Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l4">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="images/recipes/cheescake.jpg">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <h3>Cheescake</h3>
+              <p>Ingredientes
+                <ul>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#modalCheescake" class='modal-trigger'>Ver más</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div id="modalPanqueques" class="modal">
+      <div class="modal-content">
+        <h4>Panqueques</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
+    <div id="modalChocotorta" class="modal">
+      <div class="modal-content">
+        <h4>Chocotorta</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
+    <div id="modalCheescake" class="modal">
+      <div class="modal-content">
+        <h4>Cheescake</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
   </section>
-  <section id = 'quienes'>
-    <h1 class ='nombreseccion'>Quienes somos</h1>
+  <section id='quienes'>
+    <h1 class='nombreseccion'>Quienes somos</h1>
 
 
   </section>
-  <section id = 'contactanos'> 
-
+  <section id='contactanos'>
+    <h1 class='nombreseccion'>Contactanos </h1>
+  <div class= "row"> 
+    <div class="col s12">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>Horarios de atención:
+              <ul>
+                <li>Lunes a Viernes:</li>
+                <li>9 a 13hs - 16 a 20hs</li>
+                <li>Sábado:</li>
+                <li>9 a 13hs</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <p>
+      <a href="https://www.instagram.com/reposteriabuendia/">
+        <i class="fab fa-instagram"></i>Instagram
+      </a>
+    </p>
+    <p>
+      <a href="https://www.facebook.com/reposteriabuendia/">
+        <i class="fab fa-facebook-square"></i>Facebook
+      </a>
+    </p>
+    <p>
+      <a href="mailto:reposteriabuendia@gmail.com">
+        <i class="fas fa-at"></i> Envianos un mensaje
+      </a>
+    </p>
   </section>
 </body>
+
 </html>

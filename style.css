@@ -5,9 +5,10 @@
 
 section {
     height: 100vh;
-}
+    padding-top: 3vh;
+}   
 .primera {
-    padding-top: 8%;
+    padding-top: 8vh;
     text-align: center;
     background-color: RGB(203,241,244);
     background-image: linear-gradient(rgb(203,241,244) , rgb(249,219,211));
