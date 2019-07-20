@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Reposteria Buen Día</title>
+  
+  
   <script src="script.js"></script>
   <script src="./materialize/js/materialize.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Satisfy&display|ABeeZee=swap" rel="stylesheet">
@@ -33,7 +35,7 @@
   <section id='nosotros'>
     <h1 class='nombreseccion'>Sobre nosotros</h1>
     <div class= 'row'>
-      <div class="col s12 m6">
+      <div class="col s7 offset-s1" >
         <div class="card">
           <div class="card-content">
             <h4>Quienes somos</h4>
@@ -42,21 +44,16 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m6">
-        <div class="card">
-          <h4>Productos</h4>
-        </div>
-      </div>
     </div>
   </section>
   <section id='contactanos'>
     <h1 class='nombreseccion'>Contactanos </h1>
-  <div class= "row"> 
-    <div class="col s12">
-      <div class="card horizontal">
-        <div class="card-stacked">
+    <div class= "row"> 
+      <div class="col s12 m6 l4">
+        <div class="card">
           <div class="card-content">
             <p>Horarios de atención:
+
               <ul>
                 <li>Lunes a Viernes:</li>
                 <li>9 a 13hs - 16 a 20hs</li>
@@ -67,13 +64,18 @@
           </div>
         </div>
       </div>
+      <div class="col s12 m6 l4">
+        <div id = 'map'></div>
+      </div>
     </div>
-  </div>
     <div class= 'row'>
       <div class="col s12"><a href="https://www.instagram.com/reposteriabuendia/"><i class="fab fa-instagram"></i>Instagram</a></div>
       <div class="col s12"><a href="https://www.facebook.com/reposteriabuendia/"><i class="fab fa-facebook-square"></i>Facebook</a></div>
       <div class="col s12"><a href="mailto:reposteriabuendia@gmail.com"><i class="fas fa-at"></i> Envianos un mensaje</a></div>
-    </div>
+    </div> 
   </section>
+  <a class = 'abierto disponible'>Llamanos!</a>
+  <a href="" class="cerrado disponible">Escribinos!</a>
 </body>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDKbazex6ei1acbLXRK2sjDoR1aauGIo8&callback=initMap"></script>
 </html>
