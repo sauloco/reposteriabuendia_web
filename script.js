@@ -6,7 +6,9 @@ function onLoad() {
   const elems = document.querySelectorAll('.modal');
   M.Modal.init(elems, {});
   if (obtenerDisponibilidad()){
-    document.querySelector('.cerrado').classList.add('hide')
+    document.querySelector('.cerrado').classList.add('hide');
+  } else {
+    document.querySelector('.abierto').classList.add('hide');
   }
 }
 
@@ -47,13 +49,6 @@ const recetas = [
     preparacion: ['Batir los huevos junto con el azúcar y la esencia de vainilla, hasta integrar todo','Vierta en la preparación anterior la harina tamizada, el polvo de hornear','Precaliente el horno a 180º','Enmanteque y enharine un molde de torta de 24 cm','Coloque la preparación y cocine durante 25 minutos a horno moderado','Desmolde deje enfriar. Luego corte en porciones y sirva'],
   },
   {
-    imagen: '',
-    nombre: '',
-    ingredientes: [''],
-    modal: '',
-    preparacion: [''],
-  },
-  {
     imagen: 'images/recipes/tiramisu.jpg',
     nombre: 'Tiramisú',
     ingredientes: ['250 gr crema de leche','250 gr queso mascarpone','1 cd extracto de vainilla','75 gr. de azúcar','vainillas','1 taza de café','4 cucharadas de licor','Cacao en polvo sin azúcar'],
@@ -71,9 +66,11 @@ function creaRecetas() {
 
     let textoIngredientes = '';
     let textoTresIngredientes = '';
+    let pedirIngredientes = '';
     let cuenta = 0;
     for (const ingrediente of ingredientes) {
       textoIngredientes += `<li>${ingrediente}</li>`;
+      pedirIngredientes += `${ingrediente}, `;
       cuenta = cuenta + 1;
       if (cuenta < 4) {
         textoTresIngredientes += `<li>${ingrediente}</li>`;
@@ -85,18 +82,27 @@ function creaRecetas() {
       textoPreparacion += `<p>${paso}<p/>`; 
     }
     
+    let estaAbierto = obtenerDisponibilidad(); 
+    var usar;
+    pedirIngredientes = encodeURIComponent(`Buenos días, me gustaría encargar ${pedirIngredientes} ¿cuándo lo busco? Muchas gracias!`);
+    if (estaAbierto) {
+      usar = `https://wa.me/5492284612298/?text=${pedirIngredientes}`
+    } else {
+      usar = `mailto:reposteriabuendia@gmail.com?subject=Hacer pedido&body=${pedirIngredientes}`
+    }
+
     const objetoCard = `
     <div class="col s12 m6 l4">
       <div class="card small horizontal">
-        <div class="card-image">
+        <div class="maxancho card-image">
           <img src="${imagen}">
         </div>
         <div class="card-stacked">
           <div class="card-content">
             <h3>${nombre}</h3>                     
-            <p>Ingredientes                        
+            <p>Ingredientes <a href="${usar}">Pedir</a>                       
               <ul>
-                ${textoTresIngredientes}
+                ${textoTresIngredientes} 
               </ul>
             </p>
           </div>
@@ -114,8 +120,8 @@ function creaRecetas() {
         background-size: cover;
       ">
         <h3>${nombre}</h3>    
-        <h4>Ingredientes</h4>
-        <ul>
+        <h4>Ingredientes <a href="${usar}">Pedir</a></h4>
+        <ul> 
           ${textoIngredientes}
         </ul>
         <h4>Preparación</h4>
@@ -412,15 +418,6 @@ function initMap () {
   
 }
 
-/**
- * Objetivo: mostrar si ahora esta abierto o cerrado el local
- * 
- * Problemas a resolver:
- *  Saber la fecha y hora actual HECHO
- *  Saber los horarios del local HECHO
- *  Obtener abierto/cerrado HECHO
- *  Mostrar abierto/cerrado
- */
 function obtenerHoraActual() {
   var f = new Date();
   var dow = f.getDay();
@@ -434,7 +431,7 @@ function obtenerDisponibilidad() {
   return ((manana && hour >= manana[0] && hour < manana[1]) || (tarde && hour >= tarde[0] && hour < tarde[1]));
 }
 
-const manana = [9, 13];
+const manana = [9, 20];
 const tarde = [16, 20];
 const diaNormal = {
   manana,
