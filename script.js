@@ -455,7 +455,7 @@ function obtenerDisponibilidad() {
   return ((manana && hour >= manana[0] && hour < manana[1]) || (tarde && hour >= tarde[0] && hour < tarde[1]));
 }
 
-const manana = [9, 20];
+const manana = [9, 13];
 const tarde = [16, 20];
 const diaNormal = {
   manana,
