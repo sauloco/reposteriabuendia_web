@@ -3,10 +3,18 @@ window.addEventListener('DOMContentLoaded', onLoad);
 function onLoad() {
   creaRecetas();
   
-  const elems = document.querySelectorAll('.modal');
-  M.Modal.init(elems, {});
+  var carousel = document.querySelectorAll('.carousel');
+  var instances = M.Carousel.init(carousel, { 
+    numVisible: 5,
+    indicators: true
+  });
+  
+  
+  const modals = document.querySelectorAll('.modal');
+  M.Modal.init(modals, {});
   if (obtenerDisponibilidad()){
     document.querySelector('.cerrado').classList.add('hide');
+    document.querySelector('#contactanos > .subnombreseccion').innerHTML += 'Estamos atendiendo';
   } else {
     document.querySelector('.abierto').classList.add('hide');
   }
@@ -18,7 +26,7 @@ const recetas = [
     nombre: 'Panqueques',
     ingredientes: ['2 huevos','220 gr. harina 0000','500 cc. leche'],
     modal: 'modalPanqueques',
-    preparacion: ['En un bowls poner los huevos , revolver bien con batidor de alambre y agregar 100 gr. de harina, mezclar nuevamente y una vez unida la mezcla sumar 250 cc. de leche fría.','Continuar batiendo y agregar los 120 gr. de harina restante junto con el resto de la leche. Debe quedar una mezcla lisa y sin grumos.','En una sartén para panqueques o teflonada agregar media cucharadita de manteca, llevar sobre fuego fuerte haciéndola girar sobre la hornalla para que la manteca corra.'],
+    preparacion: ['En un bowl poner los huevos , revolver bien con batidor de alambre y agregar 100 gr. de harina, mezclar nuevamente y una vez unida la mezcla sumar 250 cc. de leche fría.','Continuar batiendo y agregar los 120 gr. de harina restante junto con el resto de la leche. Debe quedar una mezcla lisa y sin grumos.','En una sartén para panqueques o teflonada agregar media cucharadita de manteca, llevar sobre fuego fuerte haciéndola girar sobre la hornalla para que la manteca corra.'],
   },
   {
     imagen: 'images/recipes/cheescake.jpg',
@@ -69,7 +77,7 @@ function creaRecetas() {
     let pedirIngredientes = '';
     let cuenta = 0;
     for (const ingrediente of ingredientes) {
-      textoIngredientes += `<li>${ingrediente}</li>`;
+      textoIngredientes += `<li><label><input type="checkbox" class="filled-in" checked="checked" value="${ingrediente}"><span>${ingrediente}</span></label></li>`;
       pedirIngredientes += `${ingrediente}, `;
       cuenta = cuenta + 1;
       if (cuenta < 4) {
@@ -81,14 +89,13 @@ function creaRecetas() {
     for (const paso of preparacion) {
       textoPreparacion += `<p>${paso}<p/>`; 
     }
-    
+    pedirIngredientes = `Buenos días, me gustaría encargar ${pedirIngredientes} ¿cuándo lo busco? Muchas gracias!`;
     let estaAbierto = obtenerDisponibilidad(); 
-    var usar;
-    pedirIngredientes = encodeURIComponent(`Buenos días, me gustaría encargar ${pedirIngredientes} ¿cuándo lo busco? Muchas gracias!`);
+    let usar;
     if (estaAbierto) {
-      usar = `https://wa.me/5492284612298/?text=${pedirIngredientes}`
+      usar = `https://api.whatsapp.com/send?phone=5492284612298&text=${pedirIngredientes}&source=&data=`
     } else {
-      usar = `mailto:reposteriabuendia@gmail.com?subject=Hacer pedido&body=${pedirIngredientes}`
+      usar = `mailto:reposteriabuendia@gmail.com?subject=Hacer pedido&body=${encodeURIComponent(pedirIngredientes)}`
     }
 
     const objetoCard = `
@@ -100,7 +107,7 @@ function creaRecetas() {
         <div class="card-stacked">
           <div class="card-content">
             <h3>${nombre}</h3>                     
-            <p>Ingredientes <a href="${usar}">Pedir</a>                       
+            <p>Ingredientes <a href="${usar}" target="_blank">Pedir todo</a>                       
               <ul>
                 ${textoTresIngredientes} 
               </ul>
@@ -120,7 +127,7 @@ function creaRecetas() {
         background-size: cover;
       ">
         <h3>${nombre}</h3>    
-        <h4>Ingredientes <a href="${usar}">Pedir</a></h4>
+        <h4>Ingredientes <a class="waves-effect waves-teal btn-flat" onclick="pedir('${modal}')">Pedir</a></h4>
         <ul> 
           ${textoIngredientes}
         </ul>
@@ -135,6 +142,23 @@ function creaRecetas() {
     destinoCards.innerHTML += objetoCard;
     destinoModals.innerHTML += objetoModal;
   }
+}
+
+function pedir (modalId) {
+  const checks = document.querySelectorAll(`#${modalId} > .modal-content > ul > li > label > input[type="checkbox"]:checked`);
+  let ingredientes = '';
+  for (const check of checks) {
+    ingredientes += `${check.value}, `;
+  }
+  ingredientes = `Buenos días, me gustaría encargar ${ingredientes} ¿cuándo lo busco? Muchas gracias!`;
+  let estaAbierto = obtenerDisponibilidad(); 
+  let usar;
+  if (estaAbierto) {
+    usar = `https://api.whatsapp.com/send?phone=5492284612298&text=${ingredientes}&source=&data=`;
+  } else {
+    usar = `mailto:reposteriabuendia@gmail.com?subject=Hacer pedido&body=${encodeURIComponent(ingredientes)}`;
+  }
+  window.open(usar, '_blank');
 }
 
 function initMap () {
